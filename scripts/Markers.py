@@ -24,8 +24,13 @@ class Markers:
 
             ls = self.marker_species.get((gi,position),[])
 
- #           for o in ext.split(","):
-  #              ls.append(tax_tree.get_ti(o.strip()[1:-1]))
+            for o in ext.split(","):
+		if o == "":
+			continue
+		ti = tax_tree.get_ti(o.strip()[1:-1])
+		if ti == None:
+			continue
+                ls.append(ti)
 
 	    f = clade.find("_noname")
 	    if f != -1:
