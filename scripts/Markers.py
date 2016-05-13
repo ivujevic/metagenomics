@@ -28,3 +28,8 @@ class Markers:
                 ls.append(tax_tree.get_ti(o.strip()[1:-1]))
 
             ls += tax_tree.get_species(clade)
+
+            self.marker_species[(gi,position)] = ls
+
+    def get_species(self,gi,position):
+        return self.marker_species.get((gi, position), [])
