@@ -31,8 +31,6 @@ class TaxTree:
             name = ars[1].strip()
             name = re.sub('[^\w]+','_',name)
 	    name = name.strip('_')
-            if ars[1].strip() == "Rhizobium sp. 42MFCr.1":
-		print name
 	    if self.name2ti.get(name,"") == "":
 		self.name2ti[name] = ti
 	    elif ars[3].strip() == "scientific name":
