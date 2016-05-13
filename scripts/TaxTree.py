@@ -25,28 +25,40 @@ class TaxTree:
         for line in f_tax_names:
             line = line.strip()
             ars = line.split("|")
-            if ars[3].strip() == "scientific name":
-                ti = ars[0].strip()
-                name = ars[1].strip()
-                name = re.sub('\s','_',name)
-                name = re.sub('[^\w-]','',name)
+            
+	  
+	    ti = ars[0].strip()
+            name = ars[1].strip()
+            name = re.sub('[^\w]+','_',name)
+	    name = name.strip('_')
+            if ars[1].strip() == "Rhizobium sp. 42MFCr.1":
+		print name
+	    if self.name2ti.get(name,"") == "":
+		self.name2ti[name] = ti
+	    elif ars[3].strip() == "scientific name":
                 self.name2ti[name] = ti
 
         # GCF to species ti
         f_ref_seq = open(self.refSeq_path,"r")
         for line in f_ref_seq:
             line = line.strip()
-            ars = line.split("|")
+            ars = line.split("\t")
             if line == "" or line[0] == '#':
                 continue
 
             name = ars[0].strip().split('.')[0]
+	    name = name[4:]
             spec_ti = ars[5].strip()
-            if self.name2ti(name,"") == "":
-                self.name2ti[name] = spec_ti
+            if self.name2ti.get(name,"") == "":
+                self.name2ti["GCF_"+name] = spec_ti
+                self.name2ti["GCA_"+name] = spec_ti
 
     def get_ti(self,name):
-        return int(self.name2ti.get(name,""))
+	ret = self.name2ti.get(name,"")
+	if ret == "":
+		print("Nema ", name)
+	else:
+		return ret
 
     def get_species(self,clade_ti):
         ls = []
@@ -55,8 +67,8 @@ class TaxTree:
 
         for c in self.ti_cs.get(clade_ti,[]):
             if self.ti_rank[c] == "species" or len(self.ti_cs.get(clade_ti,[])) == 0:
-                ls += [int(clade_ti)]
+                ls += [int(c)]
             else:
-                ls += self.get_species(clade_ti)
+                ls += self.get_species(c)
 
         return ls

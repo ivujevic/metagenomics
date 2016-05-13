@@ -20,16 +20,31 @@ class Markers:
             gi = mObj.group(1)
             position = mObj.group(2) if mObj.group(2) != None else ""
             ext = mObj.group(3)
-            clade = mObj.group(4)
+            clade = mObj.group(4)[3:]
 
             ls = self.marker_species.get((gi,position),[])
 
-            for o in ext.split(","):
-                ls.append(tax_tree.get_ti(o.strip()[1:-1]))
+ #           for o in ext.split(","):
+  #              ls.append(tax_tree.get_ti(o.strip()[1:-1]))
 
-            ls += tax_tree.get_species(clade)
+	    f = clade.find("_noname")
+	    if f != -1:
+		clade = "unclassified_"+clade[:f]
+	    if clade == "Staphylococcus_caprae_capitis":
+		clade = "Staphylococcus_capitis"
+	    elif clade == "Streptomyces_roseochromogenes":
+		clade = "Streptomyces_roseochromogenes_sic"
+	    ti = tax_tree.get_ti(clade)
+	    if ti == None:
+		continue
+            ls += tax_tree.get_species(ti)
 
             self.marker_species[(gi,position)] = ls
 
     def get_species(self,gi,position):
         return self.marker_species.get((gi, position), [])
+    def print_dict(self):
+	f = open("dict.txt","w")
+	f.write(str(self.marker_species))
+	f.close()
+
