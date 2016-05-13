@@ -9,11 +9,29 @@ tax_ti = sys.argv[2]
 ref_name = sys.argv[3]
 
 markers_info = sys.argv[4]
-markers = sys.argv[5]
+p_markers = sys.argv[5]
 
 
 tax_tree = TaxTree.TaxTree(tax_ti,ref_name,tax_name)
 print("Finished with tax tree")
 
 markers = Markers.Markers(markers_info,tax_tree)
-markers.print_dict()
+
+
+f_out = open("/home/ivujevic/Markeri/renamed_markers.fa","w")
+
+for elem in SeqIO.parse(p_markers,"fasta"):
+    name = elem.id
+    sequence = str(elem.seq)
+    ars = name.split('|')
+    gi = ars[1]
+    position = ars[4]
+
+    cs = markers.get_species(gi,position)
+    if len(cs) == 0:
+        continue
+    tis = ','.join([str(ti) for ti in cs])
+
+    f_out.write(">ti|"+tis+"\n"+sequence+"\n")
+
+f_out.close()

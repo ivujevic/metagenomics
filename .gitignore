@@ -1,2 +1,4 @@
 notebook/
 .idea/
+scripts/*.pyc
+src/*pyc

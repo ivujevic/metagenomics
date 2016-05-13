@@ -9,25 +9,6 @@ class BBMAP:
         self.refPath = refPath
         self.inPath = inPath
         self.outPath = outPath
-        self.ti_cs = {}
-        self.ti_rank = {}
-	self.ti_parent = {}
-	print "DA"
-	f_tax = open("/home/ivujevic/tax/nodes.dmp","r")
-      	print "Start tax"
-        for line in f_tax:
-            cells = [i.strip() for i in line.strip().split('|')]
-            nodeTi = int(cells[0])
-            parentTi = int(cells[1])
-            rank = cells[2]
-
-            ls = self.ti_cs.get(parentTi,[])
-            ls.append(nodeTi)
-
-            self.ti_cs[parentTi] = ls
-            self.ti_rank[nodeTi] = rank
-            self.ti_parent[nodeTi] = parentTi
-	print "End tax"
 
     def run(self):
         command = "{} ref={} in={} out={}".format(self.bbmapPath, self.refPath, self.inPath, self.outPath)
@@ -86,16 +67,6 @@ class BBMAP:
                     NU[rIdx][3] = NU[rIdx][1][i]
         return (U, NU)
 
-    def getCladesChildren(self,clade_ti):
-        ls = []
-	if self.ti_rank[int(clade_ti)] == "species":
-		return [int(clade_ti)]
-        for c in self.ti_cs.get(int(clade_ti),[]):
-            if self.ti_rank[c] == "species" or len(self.ti_cs.get(int(),[])) == 0:
-                ls += [c]
-            else:
-                ls += self.getCladesChildren(c)
-	return ls
     def conv_alig2GRmat(self, pScoreCutoff):
         in1 = open(self.outPath, 'r')
         U = {}
@@ -123,13 +94,9 @@ class BBMAP:
             if refId == '*':
                 continue
 
-            parent_ti = refId.split("|")[-1]
-	    if parent_ti == "95611":
-		continue
-            for c in self.getCladesChildren(parent_ti):
+            ars = refId.split("|")[2:]
+            for c in ars:
                 refId = "ti|" + str(c);
-		if c == 197575 and parent_ti != "197575":
-			print parent_ti
                 (pScore, skipFlag) = self.find_entry_score(ln, l, pScoreCutoff)
 
                 if skipFlag:
