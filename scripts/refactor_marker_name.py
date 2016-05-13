@@ -13,4 +13,6 @@ markers = sys.argv[5]
 
 
 tax_tree = TaxTree.TaxTree(tax_ti,ref_name,tax_name)
+print("Finished with tax tree")
+
 markers = Markers.Markers(markers_info,tax_tree)
