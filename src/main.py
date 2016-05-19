@@ -7,8 +7,10 @@ def test():
     print(path)
     bb = bbMapWraper.BBMAP("","","",path)
     (U,NU,genomes,reads) = bb.conv_alig2GRmat(0.01)
-    (initPi, pi, _, NU) = pathoscope.algorithm(U,NU,genomes,50,0.01,False,0,0)
-    tmp = zip(initPi,genomes)
+    (bestHitInitialReads, bestHitInitial, level1Initial, level2Initial) = pathoscope.computeBestHit(U, NU, genomes, reads)
+    (initPi, pi, _, NU) = pathoscope.algorithm(U,NU,genomes,50,0.01,True,1,1)
+    (bestHitFinalReads, bestHitFinal, level1Final, level2Final) = pathoscope.computeBestHit(U, NU, genomes, reads)
+    tmp = zip(pi,genomes,bestHitFinal,bestHitInitial)
     tmp = sorted(tmp,reverse=True)
     k = 0
     for i in tmp:

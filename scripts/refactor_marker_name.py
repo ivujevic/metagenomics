@@ -27,11 +27,11 @@ for elem in SeqIO.parse(p_markers,"fasta"):
     gi = ars[1]
     position = ars[4]
 
-    cs = markers.get_species(gi,position)
+    cs = set(markers.get_species(gi,position))
     if len(cs) == 0:
         continue
     tis = ','.join([str(ti) for ti in cs])
 
-    f_out.write(">ti|"+tis+"\n"+sequence+"\n")
+    f_out.write(">gi|"+gi+"|ti|"+tis+"\n"+sequence+"\n")
 
 f_out.close()

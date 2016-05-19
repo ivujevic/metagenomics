@@ -3,7 +3,6 @@ import subprocess
 
 def algorithm(U, NU, genomes, maxIter, emEpsilon, verbose, piPrior, thetaPrior):
     G = len(genomes)
-    print(G)
     pi = [1. / G] * G
     initPi = pi
     theta = [1. / G] * G
@@ -30,9 +29,10 @@ def algorithm(U, NU, genomes, maxIter, emEpsilon, verbose, piPrior, thetaPrior):
     lenNU = len(NU)
     if lenNU == 0:
         lenNU = 1
-
+ 
     for i in range(maxIter):  ## EM iterations--change to convergence
         pi_old = pi
+	theta_old = theta
         thetasum = [0 for k in genomes]
 
         # E Step
@@ -75,13 +75,14 @@ def algorithm(U, NU, genomes, maxIter, emEpsilon, verbose, piPrior, thetaPrior):
         # theta = [(1.*k+thetap)/(lenNU+thetap*len(thetasum)) for k in thetasum]
 
         cutoff = 0.0
+	theta_cutoff = 0.0
         for k in range(len(pi)):
             cutoff += abs(pi_old[k] - pi[k])
+	    theta_cutoff += abs(theta_old[k] - theta[k])
         if verbose:
-            print "[%d]%g" % (i, cutoff)
-        if (cutoff <= emEpsilon or lenNU == 1):
+            print "[%d]%g %g" % (i, cutoff,theta_cutoff)
+        if (theta_cutoff <= emEpsilon or lenNU == 1):
             break
-
     return initPi, pi, theta, NU
 
 
