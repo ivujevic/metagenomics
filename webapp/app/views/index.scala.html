@@ -1,0 +1,63 @@
+@(message: String,tasks:List[Task])
+@implicitFieldConstructor = @{ helper.FieldConstructor(twitterBootstrapInput.render) }
+
+@main("Welcome to Play") {
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(task <- tasks) {
+                <tr>
+                    <td>@task.name</td>
+                    <td>@task.status</td>
+                    <td>@task.start</td>
+                    <td>
+                        <p>
+                            <a href = "@routes.Application.taskDetails(task.id)">
+                                <button class="btn btn-success  fa fa-tasks row-remove" title="Detalji">
+                                                    </button>
+                            </a>
+                        </p>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td>dsfgdfg</td>
+                <td>dfgfg</td>
+                <td>sdfg</td>
+                <td>
+                    <p>
+                        <a href = "@routes.Application.taskDetails(1)">
+                            <button class="btn btn-success  fa fa-tasks row-remove" title="Detalji">
+                            </button>
+                        </a>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Asdf</td>
+                <td>adfasdf</td>
+                <td>asfdasdf</td>
+                <td>
+                    <p>
+                        <a href = "@routes.Application.taskDetails(2)">
+                            <button class="btn btn-success  fa fa-tasks row-remove" title="Detalji">
+                            </button>
+                        </a>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    @helper.form(action = routes.Application.upload, 'enctype -> "multipart/form-data") {
+        <label class="btn btn-primary btn-file">
+            <span class="glyphicon glyphicon-cloud-upload"></span> Upload reads <input type="file" style="display: none;">
+        </label>
+    }
+}

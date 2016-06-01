@@ -1,0 +1,7 @@
+@(elements: helper.FieldElements)
+
+
+<div class="form-group @if(elements.hasErrors) {error}">
+    @elements.input
+    <span class="help-inline">@elements.errors.mkString(", ")</span>
+</div>

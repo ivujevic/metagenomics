@@ -1,0 +1,59 @@
+@main("Task details") {
+    <div id="wrapper">
+
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                </div>
+                    <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div id="morris-donut-chart"></div>
+                </div>
+                    <!-- /.panel-body -->
+            </div>
+                <!-- /.panel -->
+        </div>
+
+            <!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                </div>
+                    <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div id="morris-donut-chart"></div>
+                </div>
+                    <!-- /.panel-body -->
+            </div>
+                <!-- /.panel -->
+        </div>
+    </div>
+
+}
+<script>
+        // Donut Chart
+        Morris.Donut({
+            element: 'morris-donut-chart',
+            data: [{
+                label: "Download Sales",
+                value: 0.3
+            }, {
+                label: "In-Store Sales",
+                value: 0.1
+            }, {
+                label: "Mail-Order Sales",
+                value: 0.6
+            }],
+            resize: true
+        });
+
+        var ajax_request = function () {
+
+            console.log("Kako si")
+        }
+
+        var interval_time = 60 * 1000 * 2;
+
+        var interval = setInterval(ajax_request, interval_time)
+
+</script>

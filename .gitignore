@@ -3,3 +3,11 @@ notebook/
 scripts/*.pyc
 src/*pyc
 ignore/
+webapp/conf/evolutions/default/1.sql
+webapp/project/project/
+webapp/project/target/
+webapp/target/
+webapp/tmp/
+webapp/.history/
+webapp/.idea
+webapp/.iml
