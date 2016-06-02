@@ -52,6 +52,8 @@ public class Application extends Controller {
         Http.MultipartFormData.FilePart reads = body.getFile("reads");
         if (reads != null) {
             File file = reads.getFile();
+            file.renameTo(new File("/home/ivujevic/web/in/"+uf.taskName+".fa"));
+            file = new File("/home/ivujevic/web/in/"+uf.taskName+".fa");
             Task t = Task.create(uf.taskName);
             Runnable worker = new WorkerThread(t,file);
             executor.execute(worker);

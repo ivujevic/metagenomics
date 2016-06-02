@@ -23,6 +23,7 @@ public class WorkerThread implements Runnable{
     @Override
     public void run() {
         try{
+            System.out.println(file.getAbsolutePath());
             Process p;
             p = Runtime.getRuntime().exec("mkdir -p /home/ivujevic/web/out/");
             p.waitFor();
@@ -30,11 +31,9 @@ public class WorkerThread implements Runnable{
             p = Runtime.getRuntime().exec("mkdir -p /home/ivujevic/web/in/");
             p.waitFor();
 
-            file.renameTo(new File("/home/ivujevic/web/in/"+task.name+".fa"));
-
             String command = "/home/ivujevic/graphmap/bin/Linux-x64/graphmap align " +
                     "-r /home/ivujevic/Markeri/renamed_markers1.fa " +
-                    "-d /home/ivujevic/web/in/"+task.name+".fa" +
+                    "-d "+file.getAbsolutePath()+
                     " -o  /home/ivujevic/web/out/" + task.name +".out" +
                     " -t -1";
 
