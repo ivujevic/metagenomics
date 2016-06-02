@@ -19,4 +19,9 @@ public class Result {
     @OneToOne
     @JoinColumn(name = "task_id")
     public Task task;
+
+    String out;
+
+
+    public static Model.Finder<Long,Result> find = new Model.Finder<>(Result.class);
 }

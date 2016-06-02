@@ -114,7 +114,8 @@ public class Application extends Controller {
             }
         }
 
-
+        Task.find.where().eq("name",name).findUnique().changeResultString(ret.toString());
+        
         return ok(ret.toString());
     }
 

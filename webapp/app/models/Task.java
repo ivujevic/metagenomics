@@ -5,6 +5,9 @@ package models;
  */
 
 import com.avaje.ebean.Model;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import play.libs.Json;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,11 +26,19 @@ public class Task extends Model{
     @OneToOne(mappedBy = "task")
     public Result result;
 
+    public String resultString;
+
     public Task(String name, TaskStatus status, Date start) {
         this.name = name;
         this.status = status;
         this.start = start;
         result = null;
+        ArrayNode ret = Json.newArray();
+        ObjectNode result = Json.newObject();
+        result.put("label", "No hits found");
+        result.put("value", 1.0);
+        ret.add(result);
+        resultString = ret.toString();
     }
     
     public static Finder<Long,Task> find = new Finder<>(Task.class);
@@ -58,6 +69,12 @@ public class Task extends Model{
 
     public void changeResult(Result result) {
         this.result = result;
+        this.save();
+        this.refresh();
+    }
+
+    public void changeResultString(String resultString) {
+        this.resultString = resultString;
         this.save();
         this.refresh();
     }

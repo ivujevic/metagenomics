@@ -36,10 +36,7 @@
         // Donut Chart
         var graph = Morris.Donut({
             element: 'morris-donut-chart',
-            data: [{
-                label: "No hits found",
-                value: 1
-            }],
+            data: JSON.parse(@task.resultString),
             resize: true
         });
 
