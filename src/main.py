@@ -15,11 +15,11 @@ def test():
                                                                                                     reads)
     (initPi, pi, _, NU) = pathoscope.algorithm(U, NU, genomes, 50, 0.01, True, 1, 1)
     (bestHitFinalReads, bestHitFinal, level1Final, level2Final) = pathoscope.computeBestHit(U, NU, genomes, reads)
-    tmp = zip(pi, genomes, bestHitFinal, bestHitInitial)
-    tmp = sorted(tmp, reverse=True)
+    tmps = zip(pi, genomes, bestHitFinal, bestHitInitial)
+    tmps = sorted(tmps, reverse=True)
     k = 0
-    for i in tmp:
-        print(tmp[i])
+    for tmp in tmps:
+        print(tmp[0], "\t", tmp[1], "\t", tmp[2], "\t", tmp[3])
         k += 1
         if k == 10:
             break
