@@ -20,13 +20,13 @@
             <tbody>
             @for((elem,index) <- ls.sortBy(_.t).zipWithIndex) {
                 @if(elem.t == ListType.DIRECTORY) {
-                    <tr id="@index" style="cursor: pointer;" ondblclick="funDir('@routes.Application.getFilesList(currPath+"/"+elem.name)')">
+                    <tr id="@index" style="cursor: pointer;" onclick="funDir('@routes.Application.getFilesList(currPath+"/"+elem.name)')">
                         <td>@{index + 1}</td>
                         <td> <span class="glyphicon glyphicon-folder-open" style="font-size:15px;color:#d43f3a" >  <b>  @elem.name </b> </span></td>
                         <td> - </td>
                     </tr>
                 }else{
-                    <tr id="@index" style="cursor: pointer;" ondblclick="funFile('@{currPath+"/"+elem.name}')">
+                    <tr id="@index" style="cursor: pointer;" onlclick="funFile('@{currPath+"/"+elem.name}')">
                         <td>@{index + 1}</td>
                         <td> <span class="glyphicon glyphicon-file"> @elem.name</span></td>
                         <td>@elem.length K</td>
@@ -44,7 +44,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Uredi podatke o rezervaciji</h4>
+                    <h4 class="modal-title">Novi zadatak</h4>
                 </div>
                 <div class="modal-body">
 
