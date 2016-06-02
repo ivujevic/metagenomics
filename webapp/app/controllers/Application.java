@@ -100,7 +100,7 @@ public class Application extends Controller {
         }
 
 
-        return ok(out.toString());
+        return ok(ret.toString());
     }
 
     public static Result javascriptRoutes() {
