@@ -45,7 +45,6 @@ public class Application extends Controller {
 
     @BodyParser.Of(value = BodyParser.MultipartFormData.class, maxLength = 10 * 1024*1024*1024)
     public static Result upload() {
-
         Form<UploadForm> f = form(UploadForm.class).bindFromRequest();
         UploadForm uf = f.get();
 
@@ -63,6 +62,17 @@ public class Application extends Controller {
         }
     }
 
+    public static Result newTask(String path) {
+        Form<UploadForm> f = form(UploadForm.class).bindFromRequest();
+        UploadForm uf = f.get();
+        Task t = Task.create(uf.taskName);
+        Runnable worker = new WorkerThread(t,new File(path));
+        executor.execute(worker);
+        return redirect(routes.Application.index());
+    }
+    public static Result getUploadForm(String defPath) {
+        return ok(newTaskName.render(form(UploadForm.class),defPath));
+    }
     public static Result getResults(String name) {
         StringBuilder builder = new StringBuilder();
         try{
@@ -106,10 +116,23 @@ public class Application extends Controller {
         return ok(ret.toString());
     }
 
+    public static Result getFilesList(String path) {
+        File file = new File(path);
+        ArrayList<ListElem> elems = new ArrayList<>();
+
+        for(String f : file.list()) {
+            File listElem = new File(file,f);
+            if(listElem.isHidden()) continue;
+            ListType type = listElem.isDirectory() ? ListType.DIRECTORY : ListType.FILE;
+            elems.add(new ListElem(listElem.getName(),type,listElem.length()));
+        }
+        return ok(fileList.render(elems,path));
+    }
     public static Result javascriptRoutes() {
         response().setContentType("text/javascript");
         return ok(Routes.javascriptRouter("ruter",
-                routes.javascript.Application.getResults()
+                routes.javascript.Application.getResults(),
+                routes.javascript.Application.getUploadForm()
                 )
         );
     }
