@@ -37,14 +37,8 @@
         var graph = Morris.Donut({
             element: 'morris-donut-chart',
             data: [{
-                label: "Download Sales",
-                value: 0.3
-            }, {
-                label: "In-Store Sales",
-                value: 0.1
-            }, {
-                label: "Mail-Order Sales",
-                value: 0.6
+                label: "No hits found",
+                value: 1
             }],
             resize: true
         });
@@ -52,6 +46,7 @@
         var ajax_request = function () {
             ruter.controllers.Application.getResults("@task.name").ajax({
                 success: function(data1) {
+                    console.log(data1)
                     graph.setData(JSON.parse(data1))
                 }
             })

@@ -1,10 +1,17 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.Task;
 import models.TaskStatus;
 import play.Routes;
+import play.api.libs.json.DefaultReads;
+import play.api.libs.json.JsArray;
+import play.api.libs.json.JsValue;
 import play.data.Form;
 import play.data.validation.Constraints;
+import play.libs.Json;
 import play.mvc.*;
 import play.mvc.Http.*;
 
@@ -72,8 +79,27 @@ public class Application extends Controller {
 
         }
 
-        String a =  "[{\"label\": \"Aovo1\",\"value\":0.3},{\"label\": \"Aovo1\",\"value\":0.3},{\"label\": \"Aovo1\",\"value\":0.3}]";
-        return ok(a);
+        ArrayNode ret = Json.newArray();
+
+        String out = builder.toString().trim();
+
+        if(out.equals("No hits found")) {
+            ObjectNode n = Json.newObject();
+            n.put("label", "No hits found");
+            n.put("value", 1);
+            ret.add(n);
+        }else {
+            for(String line : out.split("\n")) {
+                ObjectNode result = Json.newObject();
+                String[] arr = line.split("\t");
+                result.put("label", arr[1]);
+                result.put("value", Double.parseDouble(arr[0]));
+                ret.add(result);
+            }
+        }
+
+
+        return ok(out.toString());
     }
 
     public static Result javascriptRoutes() {
