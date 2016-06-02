@@ -20,7 +20,7 @@ def test():
     tmp = sorted(tmp, reverse=True)
     k = 0
     for i in tmp:
-        print('\t'.join(tmp))
+        print('\t'.join(list(tmp)))
         k += 1
         if k == 10:
             break
