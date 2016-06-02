@@ -76,9 +76,10 @@ public class Application extends Controller {
                 builder.append(s+"\n");
             }
         }catch(Exception e) {
-
+            System.out.println("Rusim se");
         }
 
+        System.out.println(builder.toString());
         ArrayNode ret = Json.newArray();
 
         String out = builder.toString().trim();
