@@ -19,7 +19,7 @@ def test():
     tmp = sorted(tmp, reverse=True)
     k = 0
     for i in tmp:
-        print(tmp[0], "\t", tmp[1], "\t", tmp[2], "\t", tmp[3])
+        print(tmp[i][0], "\t", tmp[i][1], "\t", tmp[i][2], "\t", tmp[i][3])
         k += 1
         if k == 10:
             break
