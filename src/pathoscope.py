@@ -79,8 +79,6 @@ def algorithm(U, NU, genomes, maxIter, emEpsilon, verbose, piPrior, thetaPrior):
         for k in range(len(pi)):
             cutoff += abs(pi_old[k] - pi[k])
 	    theta_cutoff += abs(theta_old[k] - theta[k])
-        if verbose:
-            print "[%d]%g %g" % (i, cutoff,theta_cutoff)
         if (theta_cutoff <= emEpsilon or lenNU == 1):
             break
     return initPi, pi, theta, NU
@@ -99,8 +97,6 @@ def write_tsv_report(nR, nG, pi, genomes, initPi, bestHitInitial, bestHitInitial
             i += 1
     tmp = zip(x2[:i], x1[:i], x6[:i], x7[:i], x10[:i], x11[:i], x3[:i], x4[:i], x5[:i], x8[:i],
               x9[:i])  # Changing the column order here
-    print('Total Number of Aligned Reads:', nR, 'Total Number of Mapped Genomes:', nG)
-    print(tmp)
     return (x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11)
 
 '''

@@ -5,7 +5,6 @@ import pathoscope
 
 def test():
     path = sys.argv[1]
-    print(path)
     bb = bbMapWraper.BBMAP("", "", "", path)
     (U, NU, genomes, reads) = bb.conv_alig2GRmat(0.01)
     if len(U) == 0 and len(NU) == 0:

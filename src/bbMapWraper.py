@@ -39,8 +39,6 @@ class BBMAP:
         mapq = float(l[4])
         mapq2 = mapq / (-10.0)
         pScore = 1.0 - pow(10, mapq2)
-        if pScore < 0:
-            print(mapq)
         if (pScore < pScoreCutoff):
             skipFlag = True
 
