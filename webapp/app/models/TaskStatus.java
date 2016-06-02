@@ -5,13 +5,14 @@ package models;
  */
 public enum TaskStatus {
     ACTIVE("ACTIVE","Active"),
-    FINISHED("FINISHED","Finished");
+    FINISHED("FINISHED","Finished"),
+    ERROR("ERROR","Error");
 
     private String statusName;
     private String formName;
 
 
-    private TaskStatus(String statusName, String formName) {
+    TaskStatus(String statusName, String formName) {
         this.statusName = statusName;
         this.formName = formName;
     }

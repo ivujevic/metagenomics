@@ -39,8 +39,8 @@ class BBMAP:
         mapq = float(l[4])
         mapq2 = mapq / (-10.0)
         pScore = 1.0 - pow(10, mapq2)
-	if pScore < 0:
-		print(mapq)
+        if pScore < 0:
+            print(mapq)
         if (pScore < pScoreCutoff):
             skipFlag = True
 
@@ -50,7 +50,7 @@ class BBMAP:
         if (minScore < 0):
             scalingFactor = 100.0 / (maxScore - minScore)
         else:
-            scalingFactor =  1.0 / maxScore
+            scalingFactor = 1.0 / maxScore
 
         for rIdx in U:
             if (minScore < 0):
@@ -63,8 +63,8 @@ class BBMAP:
             for i in range(0, len(NU[rIdx][1])):
                 if (minScore < 0):
                     NU[rIdx][1][i] = NU[rIdx][1][i] - minScore
-		a = NU[rIdx][1][i]
-                NU[rIdx][1][i] =  math.exp(NU[rIdx][1][i] * scalingFactor)
+                a = NU[rIdx][1][i]
+                NU[rIdx][1][i] = math.exp(NU[rIdx][1][i] * scalingFactor)
                 if NU[rIdx][1][i] > NU[rIdx][3]:
                     NU[rIdx][3] = NU[rIdx][1][i]
         return (U, NU)
@@ -83,10 +83,10 @@ class BBMAP:
         maxScore = None
         minScore = None
 
-	brojac = 0
-	brojac1 = 0
-	prvi = []
-	drugi = []
+        brojac = 0
+        brojac1 = 0
+        prvi = []
+        drugi = []
         for ln in in1:
             if (ln[0] == '@' or len(ln.strip()) == 0):
                 continue
@@ -100,7 +100,7 @@ class BBMAP:
             if refId == '*':
                 continue
 
-	    ref = refId
+            ref = refId
             ars = refId.split("|")[3]
             for c in ars.split(","):
                 refId = "ti|" + str(c);
@@ -143,9 +143,10 @@ class BBMAP:
                     if pScore > NU[rIdx][3]:
                         NU[rIdx][3] = pScore
         in1.close()
-        (U, NU) = self.rescale_samscore(U, NU, maxScore, minScore)
+        if U != None and NU != None:
+            (U, NU) = self.rescale_samscore(U, NU, maxScore, minScore)
         del h_refId, h_readId
-	a = 0
+        a = 0
         for rIdx in U:
             U[rIdx] = [U[rIdx][0][0], U[rIdx][1][0]]  # keep gIdx and score only
         for rIdx in NU:

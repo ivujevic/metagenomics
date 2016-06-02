@@ -16,14 +16,12 @@ public class Task extends Model{
 
     @Id
     public Long id;
+
     public String name;
     public TaskStatus status;
     public Date start;
-
     @OneToOne(mappedBy = "task")
     public Result result;
-
-    public String digest;
 
     public Task(String name, TaskStatus status, Date start) {
         this.name = name;
@@ -31,7 +29,7 @@ public class Task extends Model{
         this.start = start;
         result = null;
     }
-
+    
     public static Finder<Long,Task> find = new Finder<>(Task.class);
 
     public static Task findByDigest(String digest) {
@@ -42,6 +40,25 @@ public class Task extends Model{
         Date date = new Date();
         Task t = new Task(name,TaskStatus.ACTIVE,date);
         t.save();
+        t.refresh();
         return t;
+    }
+
+    public void changeStatus(TaskStatus status) {
+        this.status = status;
+        this.save();
+        this.refresh();
+    }
+
+    public void changeName(String name) {
+        this.name = name;
+        this.save();
+        this.refresh();
+    }
+
+    public void changeResult(Result result) {
+        this.result = result;
+        this.save();
+        this.refresh();
     }
 }

@@ -1,4 +1,6 @@
 @(message: String,tasks:List[Task])
+    @import play.data.Form.form
+
 @implicitFieldConstructor = @{ helper.FieldConstructor(twitterBootstrapInput.render) }
 
 @main("Welcome to Play") {
@@ -16,7 +18,7 @@
                 <tr>
                     <td>@task.name</td>
                     <td>@task.status</td>
-                    <td>@task.start</td>
+                    <td>@task.id</td>
                     <td>
                         <p>
                             <a href = "@routes.Application.taskDetails(task.id)">
@@ -27,37 +29,32 @@
                     </td>
                 </tr>
             }
-            <tr>
-                <td>dsfgdfg</td>
-                <td>dfgfg</td>
-                <td>sdfg</td>
-                <td>
-                    <p>
-                        <a href = "@routes.Application.taskDetails(1)">
-                            <button class="btn btn-success  fa fa-tasks row-remove" title="Detalji">
-                            </button>
-                        </a>
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td>Asdf</td>
-                <td>adfasdf</td>
-                <td>asfdasdf</td>
-                <td>
-                    <p>
-                        <a href = "@routes.Application.taskDetails(2)">
-                            <button class="btn btn-success  fa fa-tasks row-remove" title="Detalji">
-                            </button>
-                        </a>
-                    </p>
-                </td>
-            </tr>
         </tbody>
     </table>
-    @helper.form(action = routes.Application.upload, 'enctype -> "multipart/form-data") {
-        <label class="btn btn-primary btn-file">
-            <span class="glyphicon glyphicon-cloud-upload"></span> Upload reads <input type="file" style="display: none;">
-        </label>
-    }
+    <button class ="btn btn-primary"
+    date-title="Uredi" data-toggle="modal" data-placement="top" rel="tooltip" onClick="modalShow ( )" title ="Uredi">
+        Uredi
+    </button>
+    <div class="modal fade" id ='modalReservation'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Uredi podatke o rezervaciji</h4>
+                </div>
+                <div class="modal-body">
+                    @uploadForm(form(classOf[Application.UploadForm]))
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div> <!-- /.modal -->
 }
+
+<script>
+function modalShow ( ) {
+    $ ( '#modalReservation' ).on ( 'shown.bs.modal', function ( ) {
+        $ ( '#modalReservation' ).focus ( ) ;
+    } )
+    $ ( '#modalReservation' ).modal ( 'show' ) ;
+}
+</script>

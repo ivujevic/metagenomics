@@ -1,3 +1,5 @@
+@(task:Task)
+
 @main("Task details") {
     <div id="wrapper">
 
@@ -32,7 +34,7 @@
 }
 <script>
         // Donut Chart
-        Morris.Donut({
+        var graph = Morris.Donut({
             element: 'morris-donut-chart',
             data: [{
                 label: "Download Sales",
@@ -48,11 +50,14 @@
         });
 
         var ajax_request = function () {
-
-            console.log("Kako si")
+            ruter.controllers.Application.getResults("@task.name").ajax({
+                success: function(data1) {
+                    graph.setData(JSON.parse(data1))
+                }
+            })
         }
 
-        var interval_time = 60 * 1000 * 2;
+        var interval_time = 60 * 1000 * 0.05;
 
         var interval = setInterval(ajax_request, interval_time)
 

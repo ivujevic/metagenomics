@@ -1,0 +1,12 @@
+@(taskForm:Form[Application.UploadForm])
+@import helper._
+
+@implicitFieldConstructor = @{ helper.FieldConstructor(twitterBootstrapInput.render) }
+<fieldset>
+@helper.form(routes.Application.upload(),'enctype -> "multipart/form-data") {
+    Task name @inputText(taskForm("taskName"),'placeholder -> "Task name", '_help -> "", 'class -> "form-control")
+    <input type="file" name="reads">
+    <input type = "submit" class="btn btn-lg btn-success btn-block"/>
+}
+
+</fieldset>

@@ -10,5 +10,8 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 
 GET     /showTask                 controllers.Application.taskDetails(id:Long)
+POST     /getResults               controllers.Application.getResults(taskName:String)
 
 POST    /upload                     controllers.Application.upload()
+
+GET         /rute                                    controllers.Application.javascriptRoutes()
