@@ -3,6 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.ser.std.StdArraySerializers;
 import models.Task;
 import models.TaskStatus;
 import play.Routes;
@@ -93,8 +94,10 @@ public class Application extends Controller {
             for(String line : out.split("\n")) {
                 ObjectNode result = Json.newObject();
                 String[] arr = line.split("\t");
+                if(Double.parseDouble(arr[2]) < 0.01) continue;
+
                 result.put("label", arr[1]);
-                result.put("value", Double.parseDouble(arr[0]));
+                result.put("value", Double.parseDouble(arr[2]));
                 ret.add(result);
             }
         }
