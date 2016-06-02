@@ -36,7 +36,10 @@
         // Donut Chart
         var graph = Morris.Donut({
             element: 'morris-donut-chart',
-            data: JSON.parse(@task.resultString),
+            data: [{
+                label: "No hits found",
+                value: 1
+            }],
             resize: true
         });
 
@@ -49,7 +52,15 @@
             })
         }
 
-        var interval_time = 60 * 1000 * 0.1;
+        $(document).on("pageload",function(){
+            ruter.controllers.Application.getResults("@task.name").ajax({
+                success: function(data1) {
+                    console.log(data1)
+                    graph.setData(JSON.parse(data1))
+                }
+            })
+        });
+        var interval_time = 60 * 1000 * 1;
 
         var interval = setInterval(ajax_request, interval_time)
 
