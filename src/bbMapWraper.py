@@ -143,7 +143,7 @@ class BBMAP:
                     if pScore > NU[rIdx][3]:
                         NU[rIdx][3] = pScore
         in1.close()
-        if U != None and NU != None:
+        if maxScore != None and minScore != None:
             (U, NU) = self.rescale_samscore(U, NU, maxScore, minScore)
         del h_refId, h_readId
         a = 0
