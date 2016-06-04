@@ -11,3 +11,4 @@ webapp/tmp/
 webapp/.history/
 webapp/.idea
 webapp/.iml
+webapp/data/*

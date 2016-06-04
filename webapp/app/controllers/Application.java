@@ -20,6 +20,7 @@ import play.mvc.Http.*;
 import scala.util.parsing.json.JSONObject;
 import views.html.*;
 
+import javax.inject.Inject;
 import java.io.*;
 
 import java.util.ArrayList;
@@ -32,6 +33,8 @@ import static play.data.Form.form;
 
 
 public class Application extends Controller {
+
+
 
     public static ExecutorService executor = Executors.newFixedThreadPool(50);
 
@@ -108,7 +111,7 @@ public class Application extends Controller {
                 String[] arr = line.split("\t");
                 if(Double.parseDouble(arr[2]) < 0.01) continue;
 
-                result.put("label", arr[1]);
+                result.put("label", TaxTree.getName(arr[1].split("\\|")[1]));
                 result.put("value", Double.parseDouble(arr[2]));
                 ret.add(result);
             }

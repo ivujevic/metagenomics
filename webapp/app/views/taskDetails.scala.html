@@ -23,9 +23,9 @@
                 </div>
                     <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <div id="morris-donut-chart"></div>
+
                 </div>
-                    <!-- /.panel-body -->
+
             </div>
                 <!-- /.panel -->
         </div>
@@ -39,10 +39,16 @@
             data: [{
                 label: "No hits found",
                 value: 1
-            }],
+            },
+                {
+                    label: "da",
+                    value: 4
+                }],
             resize: true
         });
-
+        graph.on('click', function (i, row) {
+            console.log(graph.data[i].label);
+        });
         var ajax_request = function () {
             ruter.controllers.Application.getResults("@task.name").ajax({
                 success: function(data1) {
