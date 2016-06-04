@@ -47,7 +47,7 @@ class TaxTree:
 
             name = ars[0].strip().split('.')[0]
             name = name[4:]
-            spec_ti = ars[6].strip()
+            spec_ti = ars[5].strip()
             if self.name2ti.get(name, "") == "":
                 self.name2ti["GCF_" + name] = spec_ti
                 self.name2ti["GCA_" + name] = spec_ti
