@@ -18,7 +18,7 @@ print("Finished with tax tree")
 markers = Markers.Markers(markers_info,tax_tree)
 
 
-f_out = open("/home/ivujevic/Markeri/renamed_markers.fa","w")
+f_out = open("/home/ivujevic/Markeri/renamed_markersStrains.fa","w")
 
 for elem in SeqIO.parse(p_markers,"fasta"):
     name = elem.id
