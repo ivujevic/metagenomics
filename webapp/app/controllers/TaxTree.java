@@ -12,7 +12,6 @@ import java.util.HashMap;
 public class TaxTree {
 
     private static HashMap<String,String> tax2Name = new HashMap<>();
-
     public static void readInMemory(String path) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
