@@ -10,4 +10,4 @@ for line in assembly_file:
     ls = line.split("\t")
 
     if ls[6] == species_ti:
-        print(ls[-2])
+        print(ls[-1])
