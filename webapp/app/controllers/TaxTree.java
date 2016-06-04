@@ -11,7 +11,7 @@ import java.util.HashMap;
 @Singleton
 public class TaxTree {
 
-    private static HashMap<String,String> tax2Name;
+    private static HashMap<String,String> tax2Name = new HashMap<>();
 
     public static void readInMemory(String path) {
         try {
