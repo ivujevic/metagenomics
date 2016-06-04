@@ -32,7 +32,7 @@ public class WorkerThread implements Runnable{
             p.waitFor();
 
             String command = "/home/ivujevic/graphmap/bin/Linux-x64/graphmap align " +
-                    "-r /home/ivujevic/Markeri/renamed_markers1.fa " +
+                    "-r /home/ivujevic/Markeri/renamed_markersStrains.fa " +
                     "-d "+file.getAbsolutePath()+
                     " -o  /home/ivujevic/web/out/" + task.name +".out" +
                     " -t -1";
