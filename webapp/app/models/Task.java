@@ -26,6 +26,8 @@ public class Task extends Model{
     @OneToOne(mappedBy = "task")
     public Result result;
 
+
+    @Column(columnDefinition = "TEXT")
     public String resultString;
 
     public Task(String name, TaskStatus status, Date start) {
