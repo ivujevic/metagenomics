@@ -109,7 +109,7 @@ public class Application extends Controller {
             for(String line : out.split("\n")) {
                 ObjectNode result = Json.newObject();
                 String[] arr = line.split("\t");
-                if(Double.parseDouble(arr[2]) < 0.01) continue;
+                if(Double.parseDouble(arr[2]) < 0.005) continue;
 
                 result.put("label", TaxTree.getName(arr[1].split("\\|")[1]));
                 result.put("value", Double.parseDouble(arr[2]));
