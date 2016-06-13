@@ -74,6 +74,9 @@ class BBMAP:
         h_readId = {}
         h_refId = {}
         genomes = []
+
+        coverage = {}
+
         read = []
         gCnt = 0
         rCnt = 0
@@ -100,6 +103,11 @@ class BBMAP:
 
             ref = refId
             ars = refId.split("|")[3]
+
+            ut_sam = utility_sam.SAMLine(ln)
+            readL = ut_sam.CalcReadLengthFromCigar()
+            markerL = ut_sam.CalcReferenceLengthFromCigar()
+
             for c in ars.split(","):
                 refId = "ti|" + str(c);
                 (pScore, skipFlag) = self.find_entry_score(ln, l, pScoreCutoff)
@@ -111,6 +119,11 @@ class BBMAP:
                     minScore = pScore
 
                 gIdx = h_refId.get(refId, -1)
+
+                ls = coverage.get(refId,[])
+                ls.append(float(readL) / float(markerL))
+                coverage[refId] = ls
+
                 if gIdx == -1:
                     gIdx = gCnt
                     h_refId[refId] = gIdx
@@ -150,4 +163,4 @@ class BBMAP:
         for rIdx in NU:
             pScoreSum = sum(NU[rIdx][1])
             NU[rIdx][2] = [k / pScoreSum for k in NU[rIdx][1]]  # Normalizing pScore
-        return U, NU, genomes, read
+        return U, NU, genomes, read, coverage

@@ -6,7 +6,7 @@ import pathoscope
 def test():
     path = sys.argv[1]
     bb = bbMapWraper.BBMAP("", "", "", path)
-    (U, NU, genomes, reads) = bb.conv_alig2GRmat(0.01)
+    (U, NU, genomes, reads, coverage) = bb.conv_alig2GRmat(0.01)
     if len(U) == 0 and len(NU) == 0:
         print("No hits found")
         return
@@ -19,7 +19,7 @@ def test():
     tmps = sorted(tmps, reverse=True)
     k = 0
     for tmp in tmps:
-        print(str(tmp[0]) + "\t" + tmp[1] + "\t" + str(tmp[2])+ "\t"+ str(tmp[3]))
+        print(str(tmp[0]) + "\t" + tmp[1] + "\t" + str(tmp[2])+ "\t"+ str(tmp[3]) + "\t" + str(sum(coverage[tmp[1]])))
         k += 1
         if k == 10:
             break
