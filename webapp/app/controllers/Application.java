@@ -113,6 +113,7 @@ public class Application extends Controller {
 
                 result.put("label", TaxTree.getName(arr[1].split("\\|")[1]));
                 result.put("value", Double.parseDouble(arr[2]));
+                result.put("coverage", Double.parseDouble(arr[4]));
                 ret.add(result);
             }
         }

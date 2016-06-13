@@ -39,12 +39,9 @@
             data: [{
                 label: "No hits found",
                 value: 1
-            },
-                {
-                    label: "da",
-                    value: 4
-                }],
-            resize: true
+            }],
+            resize: true,
+            formatter: function (y, data) { return y + data['value'] +"%\n'Coverage': " + data['coverage']}
         });
         graph.on('click', function (i, row) {
             console.log(graph.data[i].label);
