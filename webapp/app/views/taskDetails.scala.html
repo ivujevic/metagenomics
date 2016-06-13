@@ -41,7 +41,6 @@
                 value: 1
             }],
             resize: true,
-            formatter: function (y, data) { return y + data['value'] +"%\n'Coverage': " + data['coverage']}
         });
         graph.on('click', function (i, row) {
             console.log(graph.data[i].label);
