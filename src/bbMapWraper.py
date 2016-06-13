@@ -105,7 +105,7 @@ class BBMAP:
             ars = refId.split("|")[3]
 
             ut_sam = utility_sam.SAMLine(ln)
-            readL = ut_sam.CalcReadLengthFromCigar()
+            readL = ut_sam.CalcAlignmentLengthFromCigar()
             markerL = ut_sam.CalcReferenceLengthFromCigar()
 
             for c in ars.split(","):

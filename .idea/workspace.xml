@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95737c65-04b1-475d-9e2f-368c684b0316" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/refactor_marker_name.py" afterPath="$PROJECT_DIR$/scripts/refactor_marker_name.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bbMapWraper.py" afterPath="$PROJECT_DIR$/src/bbMapWraper.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.py" afterPath="$PROJECT_DIR$/src/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utility_sam.py" afterPath="$PROJECT_DIR$/src/utility_sam.py" />
     </list>
     <ignored path="Metagenomics.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,12 +44,45 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35662147">
+            <state vertical-scroll-proportion="0.0">
               <caret line="21" column="115" selection-start-line="21" selection-start-column="115" selection-end-line="21" selection-end-column="115" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utility_sam.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utility_sam.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="369" column="22" selection-start-line="369" selection-start-column="22" selection-end-line="369" selection-end-column="22" />
+              <folding>
+                <element signature="e#33893#34619#0" expanded="false" />
+                <element signature="e#34675#35325#0" expanded="false" />
+                <element signature="e#37222#40540#0" expanded="false" />
+                <element signature="e#40694#43263#0" expanded="false" />
+                <element signature="e#43364#44192#0" expanded="false" />
+                <element signature="e#44708#45066#0" expanded="false" />
+                <element signature="e#45105#45369#0" expanded="false" />
+                <element signature="e#45409#45769#0" expanded="false" />
+                <element signature="e#45804#47622#0" expanded="false" />
+                <element signature="e#47672#48114#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bbMapWraper.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/bbMapWraper.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.39937434">
+              <caret line="107" column="40" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#17#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,8 +109,8 @@
         <option value="$PROJECT_DIR$/scripts/TaxTree.py" />
         <option value="$PROJECT_DIR$/scripts/refactor_marker_name.py" />
         <option value="$PROJECT_DIR$/src/utility_sam.py" />
-        <option value="$PROJECT_DIR$/src/bbMapWraper.py" />
         <option value="$PROJECT_DIR$/src/main.py" />
+        <option value="$PROJECT_DIR$/src/bbMapWraper.py" />
       </list>
     </option>
   </component>
@@ -563,40 +592,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utility_sam.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="170.21428">
-          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding>
-            <element signature="e#33893#34619#0" expanded="false" />
-            <element signature="e#34675#35325#0" expanded="false" />
-            <element signature="e#37222#40540#0" expanded="false" />
-            <element signature="e#40694#43263#0" expanded="false" />
-            <element signature="e#43364#44192#0" expanded="false" />
-            <element signature="e#44708#45066#0" expanded="false" />
-            <element signature="e#45105#45369#0" expanded="false" />
-            <element signature="e#45409#45769#0" expanded="false" />
-            <element signature="e#45804#47622#0" expanded="false" />
-            <element signature="e#47672#48114#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/get_species_makeres.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6433785">
           <caret line="85" column="18" selection-start-line="85" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bbMapWraper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8686131">
-          <caret line="165" column="45" selection-start-line="165" selection-start-column="45" selection-end-line="165" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -658,9 +658,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35662147">
+        <state vertical-scroll-proportion="0.0">
           <caret line="21" column="115" selection-start-line="21" selection-start-column="115" selection-end-line="21" selection-end-column="115" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utility_sam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="369" column="22" selection-start-line="369" selection-start-column="22" selection-end-line="369" selection-end-column="22" />
+          <folding>
+            <element signature="e#33893#34619#0" expanded="false" />
+            <element signature="e#34675#35325#0" expanded="false" />
+            <element signature="e#37222#40540#0" expanded="false" />
+            <element signature="e#40694#43263#0" expanded="false" />
+            <element signature="e#43364#44192#0" expanded="false" />
+            <element signature="e#44708#45066#0" expanded="false" />
+            <element signature="e#45105#45369#0" expanded="false" />
+            <element signature="e#45409#45769#0" expanded="false" />
+            <element signature="e#45804#47622#0" expanded="false" />
+            <element signature="e#47672#48114#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bbMapWraper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39937434">
+          <caret line="107" column="40" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
