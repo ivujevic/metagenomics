@@ -5,6 +5,7 @@
 <fieldset>
 @helper.form(routes.Application.newTask(defValue)) {
     Task name @inputText(taskForm("taskName"),'placeholder -> "Task name", '_help -> "", 'class -> "form-control")
+    Description @inputText(taskForm("description"),'placeholder -> "Description", '_help -> "", 'class -> "form-control")
     <input type = "submit" class="btn btn-lg btn-success btn-block"/>
 }
 

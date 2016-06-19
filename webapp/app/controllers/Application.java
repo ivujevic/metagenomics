@@ -57,7 +57,7 @@ public class Application extends Controller {
             File file = reads.getFile();
             file.renameTo(new File("/home/ivujevic/web/in/"+uf.taskName+".fa"));
             file = new File("/home/ivujevic/web/in/"+uf.taskName+".fa");
-            Task t = Task.create(uf.taskName);
+            Task t = Task.create(uf.taskName,uf.description);
             Runnable worker = new WorkerThread(t,file);
             executor.execute(worker);
             return redirect(routes.Application.index());
@@ -70,7 +70,7 @@ public class Application extends Controller {
     public static Result newTask(String path) {
         Form<UploadForm> f = form(UploadForm.class).bindFromRequest();
         UploadForm uf = f.get();
-        Task t = Task.create(uf.taskName);
+        Task t = Task.create(uf.taskName,uf.description);
         Runnable worker = new WorkerThread(t,new File(path));
         executor.execute(worker);
         return redirect(routes.Application.index());
@@ -145,5 +145,6 @@ public class Application extends Controller {
     }
     public static class UploadForm{
         public String taskName;
+        public String description;
     }
 }

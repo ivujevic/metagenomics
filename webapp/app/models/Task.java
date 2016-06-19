@@ -29,11 +29,13 @@ public class Task extends Model{
 
     @Column(columnDefinition = "TEXT")
     public String resultString;
-
-    public Task(String name, TaskStatus status, Date start) {
+    @Column(columnDefinition = "TEXT")
+    public String description;
+    public Task(String name, TaskStatus status, Date start, String description) {
         this.name = name;
         this.status = status;
         this.start = start;
+        this.description = description;
         result = null;
         ArrayNode ret = Json.newArray();
         ObjectNode result = Json.newObject();
@@ -49,9 +51,9 @@ public class Task extends Model{
         return find.where().eq("digest",digest).findUnique();
     }
 
-    public static Task create(String name) {
+    public static Task create(String name,String description) {
         Date date = new Date();
-        Task t = new Task(name,TaskStatus.ACTIVE,date);
+        Task t = new Task(name,TaskStatus.ACTIVE,date,description);
         t.save();
         t.refresh();
         return t;
