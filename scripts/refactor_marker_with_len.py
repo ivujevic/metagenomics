@@ -12,7 +12,7 @@ for elem in SeqIO.parse("/home/ivujevic/Markeri/renamed_markers1.fa","fasta"):
     gi = ars[1]
 
     tis = ars[3]
-    
+
     f_out.write(">gi|"+gi+"|ti|"+tis + "|" + str(len(sequence))+"\n"+sequence+"\n")
 
 f_out.close()
