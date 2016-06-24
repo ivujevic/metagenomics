@@ -105,8 +105,9 @@ class BBMAP:
             ars = refId.split("|")[3]
 
             ut_sam = utility_sam.SAMLine(ln)
-            readL = ut_sam.CalcAlignmentLengthFromCigar()
+            readL = ut_sam.CalcReferenceLengthFromCigar()
             markerL = int(refId.split("|")[-1])
+            gi = refId.split("|")[1]
 
             for c in ars.split(","):
                 refId = "ti|" + str(c);
@@ -120,10 +121,11 @@ class BBMAP:
 
                 gIdx = h_refId.get(refId, -1)
 
-                ls = coverage.get(refId,[])
+                ds = coverage.get(refId,{})
+                ls = ds.get(gi,[])
                 ls.append(float(readL) / float(markerL))
-                coverage[refId] = ls
-
+                ds[refId] = ls
+                coverage[refId] = ds
                 if gIdx == -1:
                     gIdx = gCnt
                     h_refId[refId] = gIdx

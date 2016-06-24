@@ -19,7 +19,11 @@ def test():
     tmps = sorted(tmps, reverse=True)
     k = 0
     for tmp in tmps:
-        print(str(tmp[0]) + "\t" + tmp[1] + "\t" + str(tmp[2])+ "\t"+ str(tmp[3]) + "\t" + str(sum(coverage[tmp[1]])))
+        ds = coverage[tmp[1]]
+        a = []
+        for key in ds:
+            a.append(sum(ds) / len(ds))
+        print(str(tmp[0]) + "\t" + tmp[1] + "\t" + str(tmp[2])+ "\t"+ str(tmp[3]) + "\t" + str(sum(a)/ len(a)))
         k += 1
         if k == 10:
             break
