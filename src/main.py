@@ -22,8 +22,8 @@ def test():
         ds = coverage[tmp[1]]
         a = []
         for key in ds:
-            a.append(sum(ds) / len(ds))
-        print(str(tmp[0]) + "\t" + tmp[1] + "\t" + str(tmp[2])+ "\t"+ str(tmp[3]) + "\t" + str(sum(a)/ len(a)))
+            a.append(sum(ds[key]) / len(ds[key]))
+        print(str(tmp[0]) + "\t" + tmp[1] + "\t" + str(tmp[2])+ "\t"+ str(tmp[3]) + "\t" + str(sum(a) / len(a)))
         k += 1
         if k == 10:
             break
