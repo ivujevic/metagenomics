@@ -67,7 +67,7 @@ class BBMAP:
                     NU[rIdx][3] = NU[rIdx][1][i]
         return (U, NU)
 
-    def conv_alig2GRmat(self, pScoreCutoff):
+    def conv_alig2GRmat(self, pScoreCutoff, brojUcitanih):
         in1 = open(self.outPath, 'r')
         U = {}
         NU = {}
@@ -88,6 +88,7 @@ class BBMAP:
         brojac1 = 0
         prvi = []
         drugi = []
+        cn = 0
         for ln in in1:
             if (ln[0] == '@' or len(ln.strip()) == 0):
                 continue
@@ -108,7 +109,9 @@ class BBMAP:
             readL = ut_sam.CalcReferenceLengthFromCigar()
             markerL = int(refId.split("|")[-1])
             gi = refId.split("|")[1]
-
+            cn +=1
+            if cn == brojUcitanih:
+                break
             for c in ars.split(","):
                 refId = "ti|" + str(c);
                 (pScore, skipFlag) = self.find_entry_score(ln, l, pScoreCutoff)
